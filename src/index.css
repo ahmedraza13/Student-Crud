@@ -1,3 +1,166 @@
-nav{
-    margin: 20px 150px;
+body{
+    background-color: #e2e9f0;
 }
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 150px;
+}
+
+.bi-person-fill{
+    font-size: 40px;
+    color: #0873b9;
+    cursor: pointer;
+}
+
+.custom-nav {
+    border: 1px solid white; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px; 
+    background-color: #f8f9fa; 
+    border-radius: 5px; 
+}
+
+@media (max-width: 768px) {
+   nav{
+    margin: 0px 30px;
+   }
+  }
+
+
+  /* AddStudentModal.css */
+.custom-modal .modal-content {
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  .custom-modal-header {
+    background-color: #007bff;
+    color: white;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
+  
+  .custom-modal-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .custom-modal-body {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .custom-modal-footer {
+    border-top: none;
+    padding: 15px 20px;
+  }
+  
+  .custom-button {
+    background-color: #007bff;
+    border: none;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .custom-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .custom-close-button {
+    background-color: #6c757d;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  
+  .custom-close-button:hover {
+    background-color: #5a6268;
+  }
+  
+  .custom-save-button {
+    background-color: #28a745;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  
+  .custom-save-button:hover {
+    background-color: #218838;
+  }
+
+  
+  
+
+   /* Centering the table container */
+.table-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 20px auto;
+    width: 90%; /* Adjust width as needed */
+  }
+  
+  /* Table styling */
+  .custom-table {
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header styles */
+  .custom-table thead th {
+    background-color: #007bff;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    padding: 12px;
+    border: none;
+  }
+  
+  /* Row styles */
+  .custom-table tbody tr {
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .custom-table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .custom-table tbody td {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #dee2e6;
+  }
+  
+  /* Action column style */
+  .custom-table td:last-child {
+    color: #007bff;
+    cursor: pointer;
+  }
+  
+  .custom-table td:last-child:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .table-wrapper {
+      width: 100%;
+      padding: 10px;
+    }
+  
+    .custom-table {
+      font-size: 14px;
+    }
+  }
+  
+  

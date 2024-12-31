@@ -2,10 +2,10 @@ import smitlogo from "../assets/smit-logo.png"
 
 function Header() {
     return (
-        <header>
-            <nav className="d-flex justify-content-between">
-                <img src={smitlogo} alt="logo" width={170} />
-                <span>Profile Icon</span>
+        <header className="custom-nav">
+            <nav>
+                <img src={smitlogo} alt="logo" />
+                <i className="bi bi-person-fill mt-1"></i>
             </nav>
         </header>
     )
