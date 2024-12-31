@@ -1,7 +1,10 @@
+import Home from "./pages/Home";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css'
+
+
 function App() {
-  return (
-    <h1>Hello World</h1>
-  )
+  return <Home />;
 }
 
 export default App;
