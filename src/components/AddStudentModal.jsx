@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as yup from "yup";
 import { toast } from "react-toastify";
 import Button from "react-bootstrap/Button";
@@ -6,16 +6,22 @@ import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
 function AddStudentModal(props) {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+  console.log(props.currentStudent?.id);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [rollNo, setRollNo] = useState("");
   const [contactNo, setContactNo] = useState("");
   const [course, setCourse] = useState("");
+
+  useEffect(() => {
+    if (props.currentStudent) {
+      setName(props.currentStudent.name);
+      setEmail(props.currentStudent.email);
+      setRollNo(props.currentStudent.rollNo);
+      setContactNo(props.currentStudent.contactNo);
+      setCourse(props.currentStudent.course || "");
+    }
+  }, [props.currentStudent]);
 
   let schema = yup.object().shape({
     name: yup
@@ -39,10 +45,19 @@ function AddStudentModal(props) {
     course: yup.string().required("Course is required"),
   });
 
+  const clearInputs = () => {
+    setName("")
+    setEmail("")
+    setRollNo("")
+    setContactNo("")
+    setCourse("")
+    props.resetCurrentStudent(); // Reset currentStudent to null
+    props.handleShow()
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     let data = {
-      id: props.data.length + 1,
+      id: props.currentStudent ? props.currentStudent.id : props.data.length + 1, // Retain currentStudent id if updating
       name,
       email,
       rollNo,
@@ -53,8 +68,9 @@ function AddStudentModal(props) {
     try {
       let result = await schema.validate(data);
       console.log(result);
+      props.currentStudent ? props.onUpdateHandler(data, data.id) : 
       props.onAddHandler(data);
-      handleClose();
+      props.handleClose();
       setName("");
       setEmail("");
       setRollNo("");
@@ -88,11 +104,19 @@ function AddStudentModal(props) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow} className="custom-button">
+      <Button
+        variant="primary"
+        onClick={clearInputs}
+        className="custom-button"
+      >
         Add Student
       </Button>
 
-      <Modal show={show} onHide={handleClose} className="custom-modal">
+      <Modal
+        show={props.show}
+        onHide={props.handleClose}
+        className="custom-modal"
+      >
         <Modal.Header closeButton className="custom-modal-header">
           <Modal.Title className="custom-modal-title">
             Add Student Details
@@ -148,22 +172,22 @@ function AddStudentModal(props) {
               <Form.Label>Course</Form.Label>
               <Form.Select
                 name="course"
-                value={course}
+                value={course || ""}
                 aria-label="Select a course"
                 onChange={(e) => setCourse(e.target.value)}
               >
                 <option value="">Select a course</option>
-                <option value="Mathematics">Mathematics</option>
-                <option value="Science">Science</option>
-                <option value="History">History</option>
-                <option value="Computer Science">Computer Science</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Flutter Development">Flutter Development</option>
+                <option value="Graphic Designing">Graphic Designing</option>
+                <option value="Cloud Computing">Cloud Computing</option>
               </Form.Select>
             </Form.Group>
 
             <Modal.Footer className="custom-modal-footer">
               <Button
                 variant="secondary"
-                onClick={handleClose}
+                onClick={props.handleClose}
                 className="custom-close-button"
               >
                 Close
@@ -174,7 +198,7 @@ function AddStudentModal(props) {
                 className="custom-save-button"
                 onClick={handleSubmit}
               >
-                Add Student
+              {props.currentStudent ? "Update Student" : "Add Student"}
               </Button>
             </Modal.Footer>
           </Form>

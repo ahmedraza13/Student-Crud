@@ -32,6 +32,16 @@ function Home() {
     },
   ]);
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [currentStudent, setCurrentStudent] = useState(null);
+
+  const resetCurrentStudent = () => {
+    setCurrentStudent(null); // Reset the current student
+  };
   const onDeleteHandler = (id) => {
     let newData = data.filter((item, index) => {
       return item.id !== id;
@@ -45,14 +55,42 @@ function Home() {
     setData(newStudentAdded);
   };
 
-  const onUpdateHandler = () => {
-    console.log("On Update Handler")
-  }
+  const onUpdateHandler = (student, id) => {
+    console.log(id);
+    handleShow();
+    setCurrentStudent(student);
+
+    let newData = data.map((item) => {
+      if (item.id === id) {
+        console.log(item);
+        return {
+          ...item,
+          name: student.name,
+          email: student.email,
+          contactNo: student.contactNo,
+          rollNo: student.rollNo,
+          course: student.course,
+        };
+      }
+      return item;
+    });
+    setData(newData);
+  
+  };
   return (
     <>
       <Header />
       <div className="d-flex justify-content-center mt-5">
-        <AddStudentModal onAddHandler={onAddHandler} onUpdateHandler={onUpdateHandler} data={data} />
+        <AddStudentModal
+          onAddHandler={onAddHandler}
+          onUpdateHandler={onUpdateHandler}
+          data={data}
+          show={show}
+          handleShow={handleShow}
+          handleClose={handleClose}
+          currentStudent={currentStudent}
+          resetCurrentStudent={resetCurrentStudent} // New prop
+        />
       </div>
       <div className="table-wrapper">
         <Table striped bordered hover responsive className="custom-table">
