@@ -10,7 +10,7 @@ function Home() {
       id: 1,
       name: "Ahmed Raza",
       email: "ahmedfaisal@gmail.com",
-      contact: "03142322336",
+      contactNo: "03142322336",
       rollNo: "97745",
       course: "Web Development",
     },
@@ -18,7 +18,7 @@ function Home() {
       id: 2,
       name: "Fuzail",
       email: "fuzailsohail@gmail.com",
-      contact: "12345678900",
+      contactNo: "12345678900",
       rollNo: "97746",
       course: "Flutter Development",
     },
@@ -26,7 +26,7 @@ function Home() {
       id: 3,
       name: "Qasam",
       email: "qasamumer@gmail.com",
-      contact: "12345678900",
+      contactNo: "12345678900",
       rollNo: "97747",
       course: "Graphic Designing",
     },
@@ -34,21 +34,25 @@ function Home() {
 
   const onDeleteHandler = (id) => {
     let newData = data.filter((item, index) => {
-      return (
-       item.id !== id
-      )
-    })
-    setData(newData)
+      return item.id !== id;
+    });
+    setData(newData);
   };
 
-  const onAddHandler = () => {
-    console.log("On Add Handler")
+  const onAddHandler = (student) => {
+    data.push(student);
+    const newStudentAdded = [...data];
+    setData(newStudentAdded);
+  };
+
+  const onUpdateHandler = () => {
+    console.log("On Update Handler")
   }
   return (
     <>
       <Header />
       <div className="d-flex justify-content-center mt-5">
-        <AddStudentModal onAddHandler={onAddHandler} />
+        <AddStudentModal onAddHandler={onAddHandler} onUpdateHandler={onUpdateHandler} data={data} />
       </div>
       <div className="table-wrapper">
         <Table striped bordered hover responsive className="custom-table">
@@ -70,6 +74,7 @@ function Home() {
                   data={item}
                   key={index}
                   onDeleteHandler={onDeleteHandler}
+                  onUpdateHandler={onUpdateHandler}
                 />
               );
             })}

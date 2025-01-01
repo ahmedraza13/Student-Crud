@@ -1,4 +1,6 @@
 import { useState } from "react";
+import * as yup from "yup";
+import { toast } from "react-toastify";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
@@ -10,16 +12,79 @@ function AddStudentModal(props) {
   const handleShow = () => setShow(true);
 
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("")
+  const [email, setEmail] = useState("");
   const [rollNo, setRollNo] = useState("");
-  const [contactNo, setContactNo] = useState("")
-  const [course, setCourse] = useState("")
+  const [contactNo, setContactNo] = useState("");
+  const [course, setCourse] = useState("");
 
+  let schema = yup.object().shape({
+    name: yup
+      .string()
+      .min(3, "Name must be at least 3 characters")
+      .max(10, "Name must be at most 10 characters")
+      .required("Student name is required"),
+    email: yup
+      .string()
+      .email("Must be a valid email")
+      .required("Email is required"),
+    rollNo: yup
+      .string()
+      .min(3, "Roll number must be at least 3 characters")
+      .max(6, "Roll number must be at most 6 characters")
+      .required("Roll number is required"),
+    contactNo: yup
+      .string()
+      .matches(/^[0-9]{11}$/, "Contact number must be a valid 11-digit number")
+      .required("Contact number is required"),
+    course: yup.string().required("Course is required"),
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log("handleSubmit", name, email, contactNo, rollNo, course)
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let data = {
+      id: props.data.length + 1,
+      name,
+      email,
+      rollNo,
+      contactNo,
+      course,
+    };
+
+    try {
+      let result = await schema.validate(data);
+      console.log(result);
+      props.onAddHandler(data);
+      handleClose();
+      setName("");
+      setEmail("");
+      setRollNo("");
+      setContactNo("");
+      setCourse("");
+
+      toast.success("Add Student Successfully", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } catch (error) {
+      error.toString();
+      toast.error(error.message, {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  };
 
   return (
     <>
@@ -81,7 +146,12 @@ function AddStudentModal(props) {
 
             <Form.Group className="mb-3" controlId="formCourse">
               <Form.Label>Course</Form.Label>
-              <Form.Select name="course" value={course} aria-label="Select a course" onChange={(e) => setCourse(e.target.value)}>
+              <Form.Select
+                name="course"
+                value={course}
+                aria-label="Select a course"
+                onChange={(e) => setCourse(e.target.value)}
+              >
                 <option value="">Select a course</option>
                 <option value="Mathematics">Mathematics</option>
                 <option value="Science">Science</option>
@@ -104,7 +174,7 @@ function AddStudentModal(props) {
                 className="custom-save-button"
                 onClick={handleSubmit}
               >
-               Add Student
+                Add Student
               </Button>
             </Modal.Footer>
           </Form>
