@@ -3,11 +3,23 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
-function AddStudentModal() {
+function AddStudentModal(props) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("")
+  const [rollNo, setRollNo] = useState("");
+  const [contactNo, setContactNo] = useState("")
+  const [course, setCourse] = useState("")
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log("handleSubmit", name, email, contactNo, rollNo, course)
+  }
 
   return (
     <>
@@ -29,6 +41,8 @@ function AddStudentModal() {
                 type="text"
                 placeholder="Enter student's name"
                 name="studentName"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
             </Form.Group>
 
@@ -38,6 +52,8 @@ function AddStudentModal() {
                 type="email"
                 placeholder="Enter email"
                 name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </Form.Group>
 
@@ -47,6 +63,8 @@ function AddStudentModal() {
                 type="text"
                 placeholder="Enter roll number"
                 name="rollNo"
+                value={rollNo}
+                onChange={(e) => setRollNo(e.target.value)}
               />
             </Form.Group>
 
@@ -56,12 +74,14 @@ function AddStudentModal() {
                 type="text"
                 placeholder="Enter contact number"
                 name="contactNo"
+                value={contactNo}
+                onChange={(e) => setContactNo(e.target.value)}
               />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formCourse">
               <Form.Label>Course</Form.Label>
-              <Form.Select name="course" aria-label="Select a course">
+              <Form.Select name="course" value={course} aria-label="Select a course" onChange={(e) => setCourse(e.target.value)}>
                 <option value="">Select a course</option>
                 <option value="Mathematics">Mathematics</option>
                 <option value="Science">Science</option>
@@ -82,8 +102,9 @@ function AddStudentModal() {
                 variant="primary"
                 type="submit"
                 className="custom-save-button"
+                onClick={handleSubmit}
               >
-                Save Changes
+               Add Student
               </Button>
             </Modal.Footer>
           </Form>

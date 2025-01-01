@@ -10,7 +10,7 @@ function StudentTable(props) {
       <td>{props.data.course}</td>
       <td className="d-flex gap-2">
         <button className="btn btn-primary">Edit</button>
-        <button className="btn btn-danger">Delete</button>
+        <button className="btn btn-danger" onClick={() => props.onDeleteHandler(props.data.id)}>Delete</button>
       </td>
     </tr>
   );

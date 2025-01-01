@@ -31,11 +31,24 @@ function Home() {
       course: "Graphic Designing",
     },
   ]);
+
+  const onDeleteHandler = (id) => {
+    let newData = data.filter((item, index) => {
+      return (
+       item.id !== id
+      )
+    })
+    setData(newData)
+  };
+
+  const onAddHandler = () => {
+    console.log("On Add Handler")
+  }
   return (
     <>
       <Header />
       <div className="d-flex justify-content-center mt-5">
-        <AddStudentModal />
+        <AddStudentModal onAddHandler={onAddHandler} />
       </div>
       <div className="table-wrapper">
         <Table striped bordered hover responsive className="custom-table">
@@ -52,7 +65,13 @@ function Home() {
           </thead>
           <tbody>
             {data?.map((item, index) => {
-              return <StudentTable data={item} key={index} />;
+              return (
+                <StudentTable
+                  data={item}
+                  key={index}
+                  onDeleteHandler={onDeleteHandler}
+                />
+              );
             })}
           </tbody>
         </Table>
