@@ -77,16 +77,19 @@ function AddStudentModal(props) {
       setContactNo("");
       setCourse("");
 
-      toast.success("Add Student Successfully", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.success(
+        props.currentStudent ? "Student Updated Successfully" : "Student Added Successfully", 
+        {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
     } catch (error) {
       error.toString();
       toast.error(error.message, {
