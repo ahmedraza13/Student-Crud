@@ -198,70 +198,105 @@ nav {
   }
 }
 
-/* Centering the table container */
+/* Enhanced Table Styling */
 .table-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px;
   margin: 20px auto;
-  width: 90%; /* Adjust width as needed */
+  width: 90%;
 }
 
-/* Table styling */
+/* Custom Table Styles */
 .custom-table {
-  border: 1px solid #dee2e6;
-  border-radius: 8px;
+  border: none;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
 }
 
-/* Header styles */
+/* Table Header */
 .custom-table thead th {
-  background-color: #007bff;
-  color: #fff;
+  background-color: #4a90e2; /* Light blue color */
+  color: #ffffff;
+  font-size: 1.2rem;
   text-align: center;
-  font-weight: bold;
-  padding: 12px;
+  font-weight: 600;
+  padding: 15px;
   border: none;
 }
 
-/* Row styles */
+/* Table Rows */
 .custom-table tbody tr {
-  transition: all 0.3s ease;
-  cursor: pointer;
+  transition: all 0.3s ease-in-out;
   text-align: center;
+  border: none;
 }
 
+/* Hover Effect on Rows */
 .custom-table tbody tr:hover {
-  background-color: #f1f1f1;
+  background-color: #f9f9f9; /* Subtle hover effect */
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
+/* Table Cells */
 .custom-table tbody td {
-  text-align: center;
-  padding: 10px;
-  border: 1px solid #dee2e6;
+  padding: 12px;
+  border: none;
+  font-size: 1rem;
+  color: #333333;
+  vertical-align: middle;
 }
 
-/* Action column style */
-.custom-table td:last-child {
-  color: #007bff;
-  cursor: pointer;
+/* Button Styles */
+.custom-table tbody td .btn {
+  padding: 8px 15px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
 }
 
-.custom-table td:last-child:hover {
-  color: #0056b3;
-  text-decoration: underline;
+/* Primary Button */
+.custom-table tbody td .btn-primary {
+  background-color: #007bff;
+  border: none;
+  color: white;
 }
 
-/* Responsive adjustments */
+.custom-table tbody td .btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Danger Button */
+.custom-table tbody td .btn-danger {
+  background-color: #dc3545;
+  border: none;
+  color: white;
+}
+
+.custom-table tbody td .btn-danger:hover {
+  background-color: #a71d2a;
+}
+
+/* Alternate Row Background */
+.custom-table tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+/* Adjust for Smaller Screens */
 @media (max-width: 768px) {
-  .table-wrapper {
+  .custom-table {
     width: 100%;
-    padding: 10px;
+    font-size: 0.9rem;
   }
 
-  .custom-table {
-    font-size: 14px;
+  .custom-table thead th {
+    font-size: 1rem;
+  }
+
+  .custom-table tbody td {
+    padding: 8px;
   }
 }
