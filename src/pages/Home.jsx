@@ -6,32 +6,7 @@ import StudentTable from "../components/StudentTable";
 import { FaUserGraduate } from "react-icons/fa";
 
 function Home() {
-  const [data, setData] = useState([
-     {
-      id: 1,
-      name: "Ahmed Raza",
-      email: "ahmedfaisal@gmail.com",
-      contactNo: "03142322336",
-      rollNo: "97745",
-      course: "Web Development",
-    },
-    {
-      id: 2,
-      name: "Fuzail",
-      email: "fuzailsohail@gmail.com",
-      contactNo: "12345678900",
-      rollNo: "97746",
-      course: "Flutter Development",
-    },
-    {
-      id: 3,
-      name: "Qasam",
-      email: "qasamumer@gmail.com",
-      contactNo: "12345678900",
-      rollNo: "97747",
-      course: "Graphic Designing",
-    },
-  ]);
+  const [data, setData] = useState([]);
 
   const [show, setShow] = useState(false);
 
