@@ -1,16 +1,15 @@
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/Home";
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap-icons/font/bootstrap-icons.css';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css'; // This imports the CSS for styling
-import './index.css'
-
+import "./index.css";
 
 function App() {
   return (
     <>
-    <Home />
-    <ToastContainer
+      <Home />
+      <ToastContainer
         position="top-center"
         autoClose={5000}
         hideProgressBar={false}
@@ -24,8 +23,7 @@ function App() {
       />
       <ToastContainer />
     </>
-    
-  ) 
+  );
 }
 
 export default App;
