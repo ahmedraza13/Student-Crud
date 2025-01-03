@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import * as yup from "yup";
 import { toast } from "react-toastify";
+import { FaPlus } from 'react-icons/fa'; 
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
@@ -27,7 +28,7 @@ function AddStudentModal(props) {
     name: yup
       .string()
       .min(3, "Name must be at least 3 characters")
-      .max(10, "Name must be at most 10 characters")
+      .max(15, "Name must be at most 15 characters")
       .required("Student name is required"),
     email: yup
       .string()
@@ -111,8 +112,9 @@ function AddStudentModal(props) {
         variant="primary"
         onClick={clearInputs}
         className="custom-button"
+       
       >
-        Add Student
+      <FaPlus style={{ color: 'white', marginRight: '8px' }} /> Add Student
       </Button>
 
       <Modal

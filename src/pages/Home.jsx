@@ -57,7 +57,10 @@ function Home() {
   return (
     <>
       <Header />
-      <div className="d-flex justify-content-center mt-5">
+      <div className="student-management-heading">
+        <h2>Student Management System</h2>
+      </div>
+      <div className="d-flex justify-content-end me-5 mt-3">
         <AddStudentModal
           onAddHandler={onAddHandler}
           onUpdateHandler={onUpdateHandler}

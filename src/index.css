@@ -353,3 +353,33 @@ nav {
     width: 300px !important;
   }
 }
+
+
+/* AddStudentModal.css or main stylesheet */
+.student-management-heading {
+  text-align: center;
+  margin-top: 50px;
+ 
+}
+
+.student-management-heading h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #007bff; /* Match the theme color */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: fadeIn 1s ease-in-out; /* Optional fade-in effect */
+}
+
+/* Adding fade-in effect */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
