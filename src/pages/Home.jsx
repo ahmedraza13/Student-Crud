@@ -21,11 +21,16 @@ function Home() {
 
   const onDeleteHandler = (id) => {
     let newData = data.filter((item) => item.id !== id);
+    newData = newData.map((item, index) => ({
+      ...item,
+      id: index + 1
+    }))
     setData(newData);
   };
 
   const onAddHandler = (student) => {
-    const newData = [...data, student]; // Add the new student to the data array
+    let newData = [...data, student]; // Add the new student to the data array
+    newData.sort((a, b) => a.id - b.id);
     setData(newData);
   };
 
@@ -76,7 +81,7 @@ function Home() {
               className="animate-bounce"
             />
             <p className="no-data-text">
-              Oh no! No students found. Please add students!
+               No students found. Please add students!
             </p>
           </div>
         ) : (
