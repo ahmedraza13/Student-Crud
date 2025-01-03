@@ -1,9 +1,13 @@
+/* body styling */
+
 body {
   background-color: #e2e9f0;
   font-family: "Arial", sans-serif;
   margin: 0;
   padding: 0;
 }
+
+/* Header Styling */
 
 .custom-nav {
   border: 0.1rem solid #ffffff;
@@ -383,3 +387,8 @@ nav {
   }
 }
 
+@media (max-width: 1000px) {
+  .my-class {
+   margin-right: 20px;
+  }
+}
