@@ -301,11 +301,10 @@ nav {
   }
 }
 
-
-
 /* Apply bouncing animation */
 @keyframes bounce {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(0);
   }
   50% {
@@ -349,12 +348,8 @@ nav {
   }
 }
 
-
-
-
 @media (max-width: 600px) {
   .Toastify__toast {
-    width: 80% !important;
+    width: 300px !important;
   }
 }
-
