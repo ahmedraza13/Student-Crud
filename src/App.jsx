@@ -20,12 +20,7 @@ function App() {
         draggable
         pauseOnHover
         theme="light"
-        toastStyle={{
-          width: '300px', // Default width
-          '@media (max-width: 600px)': {
-            width: '80%', // Adjust width for smaller screens
-          },
-        }}
+       
       />
       <ToastContainer />
     </>

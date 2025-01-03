@@ -350,3 +350,11 @@ nav {
 }
 
 
+
+
+@media (max-width: 600px) {
+  .Toastify__toast {
+    width: 80% !important;
+  }
+}
+
